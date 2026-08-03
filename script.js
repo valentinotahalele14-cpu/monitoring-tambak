@@ -36,3 +36,60 @@ onValue(realtimeRef, (snapshot) => {
         data.suhu3.toFixed(2) + " °C";
 
 });
+let chart;
+
+const ctx = document.getElementById("historyChart");
+
+chart = new Chart(ctx, {
+
+    type: "line",
+
+    data: {
+
+        labels: [],
+
+        datasets: [
+
+            {
+
+                label: "Tambak 1",
+
+                data: [],
+
+                borderWidth: 2
+
+            },
+
+            {
+
+                label: "Tambak 2",
+
+                data: [],
+
+                borderWidth: 2
+
+            },
+
+            {
+
+                label: "Tambak 3",
+
+                data: [],
+
+                borderWidth: 2
+
+            }
+
+        ]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false
+
+    }
+
+});
