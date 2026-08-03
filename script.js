@@ -281,8 +281,16 @@ function getStatusSuhu(suhu){
             status: "🔵 Suhu Rendah",
             warna: "#0d6efd",
             deskripsi:
-            "Nafsu makan menurun, metabolisme melambat, pertumbuhan kurang optimal, dan ikan lebih rentan terhadap penyakit."
-
+            deskripsi:`
+            <b>Dampak</b><br>
+            • Nafsu makan menurun.<br>
+            • Metabolisme melambat.<br>
+            • Pertumbuhan kurang optimal.<br>
+            • Ikan lebih rentan terhadap penyakit.<br><br>
+        
+            <b>Rekomendasi</b><br>
+            Pantau suhu dan hindari penurunan suhu yang terlalu drastis.
+            `
         };
 
     }
@@ -291,9 +299,16 @@ function getStatusSuhu(suhu){
         return {
             status: "🟢 Optimal",
             warna: "#198754",
-            deskripsi:
-            "Suhu berada pada kisaran ideal sehingga metabolisme, konsumsi pakan, dan pertumbuhan ikan berlangsung optimal."
-
+            deskripsi:`
+            <b>Dampak</b><br>
+            • Nafsu makan optimal.<br>
+            • Metabolisme normal.<br>
+            • Pertumbuhan maksimal.<br>
+            • Kondisi tambak ideal.<br><br>
+        
+            <b>Rekomendasi</b><br>
+            Pertahankan kondisi tambak seperti saat ini.
+            `
         };
 
     }
@@ -302,8 +317,15 @@ function getStatusSuhu(suhu){
         return {
             status: "🟡 Waspada",
             warna: "#ffc107",
-            deskripsi:
-            "Suhu mulai melebihi kisaran optimum. Oksigen terlarut dapat berkurang sehingga perlu dipantau."
+            deskripsi:`
+            <b>Dampak</b><br>
+            • Suhu mulai melebihi kisaran ideal.<br>
+            • Oksigen terlarut mulai menurun.<br>
+            • Ikan masih dapat tumbuh dengan baik.<br><br>
+        
+            <b>Rekomendasi</b><br>
+            Pantau suhu secara berkala dan pastikan aerasi bekerja dengan baik.
+            `
 
             
         };
@@ -314,9 +336,15 @@ function getStatusSuhu(suhu){
         return {
             status: "🟠 Siaga",
             warna: "#fd7e14",
-            deskripsi:
-            "Suhu cukup tinggi dan dapat menyebabkan stres ringan serta menurunkan nafsu makan ikan."
-
+            deskripsi:`
+            <b>Dampak</b><br>
+            • Metabolisme meningkat.<br>
+            • Ikan mulai mengalami stres.<br>
+            • Nafsu makan menurun.<br><br>
+        
+            <b>Rekomendasi</b><br>
+            Tingkatkan aerasi dan lakukan sirkulasi air bila memungkinkan.
+            `
         };
 
     }
@@ -325,9 +353,16 @@ function getStatusSuhu(suhu){
         return {
             status: "🔴 Bahaya",
             warna: "#dc3545",
-            deskripsi:
-            "Suhu sangat tinggi. Risiko stres berat dan kematian ikan meningkat sehingga perlu penanganan segera."
-
+            deskripsi:`
+            <b>Dampak</b><br>
+            • Suhu sangat tinggi.<br>
+            • Risiko stres berat meningkat.<br>
+            • Pertumbuhan terganggu.<br>
+            • Risiko kematian ikan meningkat.<br><br>
+        
+            <b>Rekomendasi</b><br>
+            Segera turunkan suhu air atau lakukan pergantian air.
+            `
         };
 
     }
