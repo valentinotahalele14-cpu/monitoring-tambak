@@ -35,6 +35,18 @@ onValue(realtimeRef, (snapshot) => {
     document.getElementById("suhu3").innerHTML =
         data.suhu3.toFixed(2) + " °C";
 
+    const status1 = getStatusSuhu(data.suhu1);
+    const status2 = getStatusSuhu(data.suhu2);
+    const status3 = getStatusSuhu(data.suhu3);
+    
+    document.getElementById("status1").innerHTML = status1.status;
+    document.getElementById("status2").innerHTML = status2.status;
+    document.getElementById("status3").innerHTML = status3.status;
+    
+    document.getElementById("status1").style.color = status1.warna;
+    document.getElementById("status2").style.color = status2.warna;
+    document.getElementById("status3").style.color = status3.warna;
+
 });
 let chart;
 
@@ -248,5 +260,50 @@ function tampilkanHistory(data)
     chart.data.datasets[2].data = suhu3;
     
     chart.update();
+
+}
+
+function getStatusSuhu(suhu){
+
+    if(suhu < 25){
+
+        return {
+            status: "🔵 Suhu Rendah",
+            warna: "#0d6efd"
+        };
+
+    }
+    else if(suhu <= 30){
+
+        return {
+            status: "🟢 Optimal",
+            warna: "#198754"
+        };
+
+    }
+    else if(suhu <= 32){
+
+        return {
+            status: "🟡 Waspada",
+            warna: "#ffc107"
+        };
+
+    }
+    else if(suhu <= 35){
+
+        return {
+            status: "🟠 Siaga",
+            warna: "#fd7e14"
+        };
+
+    }
+    else{
+
+        return {
+            status: "🔴 Bahaya",
+            warna: "#dc3545"
+        };
+
+    }
 
 }
