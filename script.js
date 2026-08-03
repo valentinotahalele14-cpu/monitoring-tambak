@@ -92,7 +92,10 @@ chart = new Chart(ctx, {
     scales:{
         y:{
             min:20,
-            max:35
+            max:35,
+            ticks: {
+                stepSize: 2
+            }
         }
     }
 }
