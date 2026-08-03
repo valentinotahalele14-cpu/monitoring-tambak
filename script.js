@@ -280,7 +280,6 @@ function getStatusSuhu(suhu){
         return {
             status: "🔵 Suhu Rendah",
             warna: "#0d6efd",
-            deskripsi:
             deskripsi:`
             <b>Dampak</b><br>
             • Nafsu makan menurun.<br>
