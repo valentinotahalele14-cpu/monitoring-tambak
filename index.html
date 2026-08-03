@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Monitoring Tambak Lele</title>
+    <title>Monitoring Tambak Lele Desa Duwet</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -15,21 +15,39 @@
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header>
 
-        <h1>Monitoring Suhu Tambak Lele</h1>
+        <div class="header-container">
 
-        <p>Dashboard Monitoring Berbasis ESP32 dan Firebase</p>
+            <h1>Monitoring Tambak Lele Desa Duwet</h1>
+
+            <p>
+                Dashboard Monitoring Suhu Air Berbasis ESP32 dan Firebase
+            </p>
+
+        </div>
 
     </header>
 
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
 
-        <section class="status">
+        <!-- =========================
+             STATUS
+        ========================== -->
 
-            <div class="status-box">
+        <section class="status-section">
 
-                <h3>Status ESP32</h3>
+            <div class="status-card">
+
+                <h3>Status Perangkat</h3>
 
                 <p id="status">
                     🟡 Menghubungkan...
@@ -37,7 +55,7 @@
 
             </div>
 
-            <div class="status-box">
+            <div class="status-card">
 
                 <h3>Update Terakhir</h3>
 
@@ -49,35 +67,160 @@
 
         </section>
 
-        <section class="sensor">
+        <!-- =========================
+             SENSOR
+        ========================== -->
 
-            <div class="card">
+        <section class="sensor-section">
 
-                <h2>Sensor 1</h2>
+            <div class="sensor-card">
 
-                <p id="suhu1">-- °C</p>
+                <h2>Tambak 1</h2>
+
+                <div class="temperature">
+
+                    🌡️
+                    <span id="suhu1">
+                        -- °C
+                    </span>
+
+                </div>
+
+                <p id="statusTambak1">
+
+                    🟢 Normal
+
+                </p>
 
             </div>
 
-            <div class="card">
+            <div class="sensor-card">
 
-                <h2>Sensor 2</h2>
+                <h2>Tambak 2</h2>
 
-                <p id="suhu2">-- °C</p>
+                <div class="temperature">
+
+                    🌡️
+                    <span id="suhu2">
+                        -- °C
+                    </span>
+
+                </div>
+
+                <p id="statusTambak2">
+
+                    🟢 Normal
+
+                </p>
 
             </div>
 
-            <div class="card">
+            <div class="sensor-card">
 
-                <h2>Sensor 3</h2>
+                <h2>Tambak 3</h2>
 
-                <p id="suhu3">-- °C</p>
+                <div class="temperature">
+
+                    🌡️
+                    <span id="suhu3">
+                        -- °C
+                    </span>
+
+                </div>
+
+                <p id="statusTambak3">
+
+                    🟢 Normal
+
+                </p>
 
             </div>
 
         </section>
 
+        <!-- =========================
+             GRAFIK
+        ========================== -->
+
+        <section class="chart-section">
+
+            <h2>
+
+                📈 Grafik Perubahan Suhu
+
+            </h2>
+
+            <canvas id="historyChart">
+
+            </canvas>
+
+        </section>
+
+        <!-- =========================
+             RIWAYAT
+        ========================== -->
+
+        <section class="history-section">
+
+            <h2>
+
+                📋 Riwayat Monitoring
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Waktu</th>
+
+                        <th>Tambak 1</th>
+
+                        <th>Tambak 2</th>
+
+                        <th>Tambak 3</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyBody">
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            Belum ada data
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
     </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        Monitoring Tambak Lele Desa Duwet © 2026
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module" src="firebase.js"></script>
+
+    <script type="module" src="script.js"></script>
 
 </body>
 
