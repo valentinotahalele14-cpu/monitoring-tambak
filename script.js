@@ -417,3 +417,155 @@ function tampilkanHari(tanggal){
     updateGrafikHari(semuaJam);
 
 }
+
+function buatTabJam(semuaJam){
+
+    const container = document.getElementById("jamTabs");
+
+    container.innerHTML = "";
+
+    const jamList = Object.keys(semuaJam).sort();
+
+    jamList.forEach((jam,index)=>{
+
+        const tab = document.createElement("div");
+
+        tab.className = "jam-tab";
+
+        if(index===0){
+
+            tab.classList.add("active-tab");
+
+        }
+
+        tab.innerHTML = jam.replace(/-/g,":");
+
+        tab.onclick=()=>{
+
+            document.querySelectorAll(".jam-tab")
+            .forEach(x=>x.classList.remove("active-tab"));
+
+            tab.classList.add("active-tab");
+
+            const tujuan = document.getElementById("jam-"+jam);
+
+            if(tujuan){
+
+                tujuan.scrollIntoView({
+
+                    behavior:"smooth",
+
+                    block:"start"
+
+                });
+
+            }
+
+        };
+
+        container.appendChild(tab);
+
+    });
+
+}
+
+function buatTabelHari(semuaJam){
+
+    const tbody = document.getElementById("historyBody");
+
+    tbody.innerHTML = "";
+
+    const jamList = Object.keys(semuaJam).sort();
+
+    jamList.forEach(jam=>{
+
+        tbody.innerHTML += `
+        <tr id="jam-${jam}">
+            <td colspan="4"
+                style="
+                background:#0d6efd;
+                color:white;
+                font-weight:bold;
+                text-align:left;">
+                Monitoring ${jam.replace(/-/g,":")}
+            </td>
+        </tr>
+        `;
+
+        const data = semuaJam[jam];
+
+        for(let i=1;i<=data.jumlahSample;i++){
+
+            const sample=data["sample"+i];
+
+            tbody.innerHTML += `
+            <tr>
+
+                <td>${sample.waktu}</td>
+
+                <td>${sample.suhu1.toFixed(2)} °C</td>
+
+                <td>${sample.suhu2.toFixed(2)} °C</td>
+
+                <td>${sample.suhu3.toFixed(2)} °C</td>
+
+            </tr>
+            `;
+
+        }
+
+    });
+
+}
+
+function updateGrafikHari(semuaJam){
+
+    const labels=[];
+
+    const suhu1=[];
+
+    const suhu2=[];
+
+    const suhu3=[];
+
+    const jamList=Object.keys(semuaJam).sort();
+
+    jamList.forEach(jam=>{
+
+        const data=semuaJam[jam];
+
+        for(let i=1;i<=data.jumlahSample;i++){
+
+            const sample=data["sample"+i];
+
+            labels.push(sample.waktu);
+
+            suhu1.push(sample.suhu1);
+
+            suhu2.push(sample.suhu2);
+
+            suhu3.push(sample.suhu3);
+
+        }
+
+    });
+
+    const semuaData=[...suhu1,...suhu2,...suhu3];
+
+    chart.options.scales.y.min=Math.floor(Math.min(...semuaData)/2)*2;
+
+    chart.options.scales.y.max=Math.ceil(Math.max(...semuaData)/2)*2;
+
+    chart.options.scales.y.ticks.stepSize=1;
+
+    chart.data.labels=labels;
+
+    chart.data.datasets[0].data=suhu1;
+
+    chart.data.datasets[1].data=suhu2;
+
+    chart.data.datasets[2].data=suhu3;
+
+    chart.update();
+
+}
