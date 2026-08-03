@@ -81,32 +81,20 @@ chart = new Chart(ctx, {
 
     },
 
-    options: {
+    options:{
 
-    responsive: true,
+    responsive:true,
 
-    maintainAspectRatio: false,
+    maintainAspectRatio:false,
 
-    animation: false,
+    animation:false,
 
-    scales: {
-
-        y: {
-
-            min: 20,
-
-            max: 35,
-
-            ticks: {
-
-                stepSize: 1
-
-            }
-
+    scales:{
+        y:{
+            min:20,
+            max:35
         }
-
     }
-
 }
 
 });
