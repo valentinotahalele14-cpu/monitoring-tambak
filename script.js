@@ -51,33 +51,30 @@ chart = new Chart(ctx, {
         datasets: [
 
             {
-
                 label: "Tambak 1",
-
                 data: [],
-
-                borderWidth: 2
-
+                borderColor: "#0d6efd",
+                backgroundColor: "#0d6efd",
+                tension: 0.3,
+                borderWidth: 3
             },
 
             {
-
                 label: "Tambak 2",
-
                 data: [],
-
-                borderWidth: 2
-
+                borderColor: "#198754",
+                backgroundColor: "#198754",
+                tension: 0.3,
+                borderWidth: 3
             },
 
             {
-
                 label: "Tambak 3",
-
                 data: [],
-
-                borderWidth: 2
-
+                borderColor: "#dc3545",
+                backgroundColor: "#dc3545",
+                tension: 0.3,
+                borderWidth: 3
             }
 
         ]
@@ -86,11 +83,31 @@ chart = new Chart(ctx, {
 
     options: {
 
-        responsive: true,
+    responsive: true,
 
-        maintainAspectRatio: false
+    maintainAspectRatio: false,
+
+    animation: false,
+
+    scales: {
+
+        y: {
+
+            min: 20,
+
+            max: 35,
+
+            ticks: {
+
+                stepSize: 1
+
+            }
+
+        }
 
     }
+
+}
 
 });
 
@@ -162,6 +179,5 @@ function tampilkanHistory(data)
     chart.data.datasets[2].data = suhu3;
 
     chart.update();
-}
 
 }
