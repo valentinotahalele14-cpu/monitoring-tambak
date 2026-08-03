@@ -224,12 +224,19 @@ function tampilkanHistory(data)
     // ==========================
     
     const semuaData = [...suhu1, ...suhu2, ...suhu3];
-    
+
     const minValue = Math.min(...semuaData);
     const maxValue = Math.max(...semuaData);
     
-    chart.options.scales.y.min = Math.floor(minValue) - 1;
-    chart.options.scales.y.max = Math.ceil(maxValue) + 1;
+    // Batas bawah dibulatkan ke genap di bawah
+    chart.options.scales.y.min =
+        Math.floor(minValue / 2) * 2;
+    
+    // Batas atas dibulatkan ke genap di atas
+    chart.options.scales.y.max =
+        Math.ceil(maxValue / 2) * 2;
+    
+    // Interval sumbu
     chart.options.scales.y.ticks.stepSize = 1;
     
     // ==========================
