@@ -47,6 +47,16 @@ onValue(realtimeRef, (snapshot) => {
     document.getElementById("status2").style.color = status2.warna;
     document.getElementById("status3").style.color = status3.warna;
 
+    // Tambahkan bagian ini
+    document.getElementById("tooltip1").innerHTML =
+    "<b>" + status1.status + "</b><br><br>" + status1.deskripsi;
+    
+    document.getElementById("tooltip2").innerHTML =
+    "<b>" + status2.status + "</b><br><br>" + status2.deskripsi;
+    
+    document.getElementById("tooltip3").innerHTML =
+    "<b>" + status3.status + "</b><br><br>" + status3.deskripsi;
+
 });
 let chart;
 
@@ -269,7 +279,10 @@ function getStatusSuhu(suhu){
 
         return {
             status: "🔵 Suhu Rendah",
-            warna: "#0d6efd"
+            warna: "#0d6efd",
+            deskripsi:
+            "Nafsu makan menurun, metabolisme melambat, pertumbuhan kurang optimal, dan ikan lebih rentan terhadap penyakit."
+
         };
 
     }
@@ -277,7 +290,10 @@ function getStatusSuhu(suhu){
 
         return {
             status: "🟢 Optimal",
-            warna: "#198754"
+            warna: "#198754",
+            deskripsi:
+            "Suhu berada pada kisaran ideal sehingga metabolisme, konsumsi pakan, dan pertumbuhan ikan berlangsung optimal."
+
         };
 
     }
@@ -285,7 +301,11 @@ function getStatusSuhu(suhu){
 
         return {
             status: "🟡 Waspada",
-            warna: "#ffc107"
+            warna: "#ffc107",
+            deskripsi:
+            "Suhu mulai melebihi kisaran optimum. Oksigen terlarut dapat berkurang sehingga perlu dipantau."
+
+            
         };
 
     }
@@ -293,7 +313,10 @@ function getStatusSuhu(suhu){
 
         return {
             status: "🟠 Siaga",
-            warna: "#fd7e14"
+            warna: "#fd7e14",
+            deskripsi:
+            "Suhu cukup tinggi dan dapat menyebabkan stres ringan serta menurunkan nafsu makan ikan."
+
         };
 
     }
@@ -301,7 +324,10 @@ function getStatusSuhu(suhu){
 
         return {
             status: "🔴 Bahaya",
-            warna: "#dc3545"
+            warna: "#dc3545",
+            deskripsi:
+            "Suhu sangat tinggi. Risiko stres berat dan kematian ikan meningkat sehingga perlu penanganan segera."
+
         };
 
     }
