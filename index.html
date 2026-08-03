@@ -2,52 +2,82 @@
 <html lang="id">
 
 <head>
-    
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Monitoring Tambak Lele</title>
-       
+
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <h1>Monitoring Suhu Tambak Lele</h1>
+    <header>
 
-    <h2>Status ESP32</h2>
+        <h1>Monitoring Suhu Tambak Lele</h1>
 
-    <p id="status">
-        Menghubungkan...
-    </p>
+        <p>Dashboard Monitoring Berbasis ESP32 dan Firebase</p>
 
-    <hr>
+    </header>
 
-    <h2>Sensor 1</h2>
+    <main>
 
-    <p id="suhu1">
+        <section class="status">
 
-        -- °C
+            <div class="status-box">
 
-    </p>
+                <h3>Status ESP32</h3>
 
-    <h2>Sensor 2</h2>
+                <p id="status">
+                    🟡 Menghubungkan...
+                </p>
 
-    <p id="suhu2">
+            </div>
 
-        -- °C
+            <div class="status-box">
 
-    </p>
+                <h3>Update Terakhir</h3>
 
-    <h2>Sensor 3</h2>
+                <p id="update">
+                    --
+                </p>
 
-    <p id="suhu3">
+            </div>
 
-        -- °C
+        </section>
 
-    </p>
+        <section class="sensor">
+
+            <div class="card">
+
+                <h2>Sensor 1</h2>
+
+                <p id="suhu1">-- °C</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Sensor 2</h2>
+
+                <p id="suhu2">-- °C</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Sensor 3</h2>
+
+                <p id="suhu3">-- °C</p>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </body>
 
