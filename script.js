@@ -54,51 +54,106 @@ chart = new Chart(ctx, {
                 label: "Tambak 1",
                 data: [],
                 borderColor: "#0d6efd",
-                backgroundColor: "#0d6efd",
-                tension: 0.3,
-                borderWidth: 3
+                backgroundColor: "rgba(13,110,253,0.15)",
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                fill: false,
+                tension: 0.35
             },
 
             {
                 label: "Tambak 2",
                 data: [],
                 borderColor: "#198754",
-                backgroundColor: "#198754",
-                tension: 0.3,
-                borderWidth: 3
+                backgroundColor: "rgba(25,135,84,0.15)",
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                fill: false,
+                tension: 0.35
             },
 
             {
                 label: "Tambak 3",
                 data: [],
                 borderColor: "#dc3545",
-                backgroundColor: "#dc3545",
-                tension: 0.3,
-                borderWidth: 3
+                backgroundColor: "rgba(220,53,69,0.15)",
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                fill: false,
+                tension: 0.35
             }
 
         ]
 
     },
 
-    options:{
+    options: {
 
-    responsive:true,
+        responsive: true,
 
-    maintainAspectRatio:false,
+        maintainAspectRatio: false,
 
-    animation:false,
+        animation: false,
 
-    scales:{
-        y:{
-            min:20,
-            max:35,
-            ticks: {
-                stepSize: 2
+        interaction: {
+            mode: "index",
+            intersect: false
+        },
+
+        plugins: {
+
+            legend: {
+                position: "top"
+            },
+
+            tooltip: {
+                enabled: true
             }
+
+        },
+
+        scales: {
+
+            x: {
+
+                grid: {
+                    display: false
+                },
+
+                ticks: {
+                    maxRotation: 0
+                }
+
+            },
+
+            y: {
+
+                beginAtZero: false,
+
+                suggestedMin: 24,
+
+                suggestedMax: 30,
+
+                ticks: {
+
+                    stepSize: 1
+
+                },
+
+                grid: {
+
+                    color: "#e5e5e5"
+
+                }
+
+            }
+
         }
+
     }
-}
 
 });
 
