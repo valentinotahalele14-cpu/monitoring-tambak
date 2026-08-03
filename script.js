@@ -122,34 +122,46 @@ onValue(historyRef, (snapshot) => {
 
 });
 
-function tampilkanHistory(data){
-
+function tampilkanHistory(data)
+{
     const tbody = document.getElementById("historyBody");
 
     tbody.innerHTML = "";
 
+    const labels = [];
+    const suhu1 = [];
+    const suhu2 = [];
+    const suhu3 = [];
+
     const jumlah = data.jumlahSample;
 
-    for(let i = 1; i <= jumlah; i++){
-
+    for(let i = 1; i <= jumlah; i++)
+    {
         const sample = data["sample" + i];
 
-        const row = `
+        labels.push(sample.waktu);
+
+        suhu1.push(sample.suhu1);
+        suhu2.push(sample.suhu2);
+        suhu3.push(sample.suhu3);
+
+        tbody.innerHTML += `
         <tr>
-
             <td>${sample.waktu}</td>
-
             <td>${sample.suhu1.toFixed(2)} °C</td>
-
             <td>${sample.suhu2.toFixed(2)} °C</td>
-
             <td>${sample.suhu3.toFixed(2)} °C</td>
-
         </tr>
         `;
-
-        tbody.innerHTML += row;
-
     }
+
+    chart.data.labels = labels;
+
+    chart.data.datasets[0].data = suhu1;
+    chart.data.datasets[1].data = suhu2;
+    chart.data.datasets[2].data = suhu3;
+
+    chart.update();
+}
 
 }
