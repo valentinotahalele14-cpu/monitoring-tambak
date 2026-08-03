@@ -181,29 +181,15 @@ chart = new Chart(ctx, {
 
 const historyRef = ref(database, "monitoring/history");
 
+let semuaHistory = {};
+
 onValue(historyRef, (snapshot) => {
 
-    const history = snapshot.val();
+    semuaHistory = snapshot.val();
 
-    if (!history) return;
+    if(!semuaHistory) return;
 
-    // Ambil tanggal terbaru
-    const tanggalList = Object.keys(history).sort();
-
-    const tanggalTerbaru = tanggalList[tanggalList.length - 1];
-
-    // Ambil seluruh sesi pada tanggal tersebut
-    const sesi = history[tanggalTerbaru];
-
-    // Ambil jam terbaru
-    const jamList = Object.keys(sesi).sort();
-
-    const jamTerbaru = jamList[jamList.length - 1];
-
-    // Ambil data sesi terbaru
-    const data = sesi[jamTerbaru];
-
-    tampilkanHistory(data);
+    buatTabTanggal();
 
 });
 
@@ -365,5 +351,69 @@ function getStatusSuhu(suhu){
         };
 
     }
+
+    
+
+}
+
+function buatTabTanggal(){
+
+    const container = document.getElementById("tanggalTabs");
+
+    container.innerHTML = "";
+
+    const tanggalList = Object.keys(semuaHistory).sort().reverse();
+
+    tanggalList.forEach((tanggal,index)=>{
+
+        const tab = document.createElement("div");
+
+        tab.className = "tanggal-tab";
+
+        if(index===0){
+
+            tab.classList.add("active-tab");
+
+        }
+
+        const teks = new Date(tanggal)
+            .toLocaleDateString("id-ID",{
+
+                day:"2-digit",
+
+                month:"short"
+
+            });
+
+        tab.innerHTML = teks;
+
+        tab.onclick=()=>{
+
+            document.querySelectorAll(".tanggal-tab")
+            .forEach(x=>x.classList.remove("active-tab"));
+
+            tab.classList.add("active-tab");
+
+            tampilkanHari(tanggal);
+
+        };
+
+        container.appendChild(tab);
+
+    });
+
+    tampilkanHari(tanggalList[0]);
+
+}
+
+function tampilkanHari(tanggal){
+
+    const semuaJam = semuaHistory[tanggal];
+
+    buatTabJam(semuaJam);
+
+    buatTabelHari(semuaJam);
+
+    updateGrafikHari(semuaJam);
 
 }
