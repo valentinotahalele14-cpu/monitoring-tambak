@@ -5,108 +5,47 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Monitoring Tambak Lele</title>
-
-    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <header>
+    <h1>Monitoring Suhu Tambak Lele</h1>
 
-        <h1>Monitoring Suhu Tambak Lele</h1>
+    <h2>Status ESP32</h2>
 
-        <p>
-            Dashboard Monitoring Berbasis ESP32 & Firebase
-        </p>
+    <p id="status">
+        Menghubungkan...
+    </p>
 
-    </header>
+    <hr>
 
-    <main>
+    <h2>Sensor 1</h2>
 
-        <section class="status">
+    <p id="suhu1">
 
-            <div class="status-card">
+        -- °C
 
-                <h2>Status ESP32</h2>
+    </p>
 
-                <p id="espStatus">
-                    Menghubungkan...
-                </p>
+    <h2>Sensor 2</h2>
 
-            </div>
+    <p id="suhu2">
 
-            <div class="status-card">
+        -- °C
 
-                <h2>Update Terakhir</h2>
+    </p>
 
-                <p id="updateTime">
-                    --
-                </p>
+    <h2>Sensor 3</h2>
 
-            </div>
+    <p id="suhu3">
 
-        </section>
+        -- °C
 
-        <section class="cards">
-
-            <div class="card">
-
-                <h2>Sensor 1</h2>
-
-                <p id="suhu1">-- °C</p>
-
-            </div>
-
-            <div class="card">
-
-                <h2>Sensor 2</h2>
-
-                <p id="suhu2">-- °C</p>
-
-            </div>
-
-            <div class="card">
-
-                <h2>Sensor 3</h2>
-
-                <p id="suhu3">-- °C</p>
-
-            </div>
-
-        </section>
-
-        <section class="chart">
-
-            <h2>Grafik Riwayat</h2>
-
-            <canvas id="historyChart"></canvas>
-
-        </section>
-
-        <section class="history">
-
-            <h2>Riwayat Monitoring</h2>
-
-            <div id="historyTable">
-
-                Belum ada data
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script type="module" src="firebase.js"></script>
-
-    <script type="module" src="script.js"></script>
+    </p>
 
 </body>
 
