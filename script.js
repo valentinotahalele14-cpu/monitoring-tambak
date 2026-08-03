@@ -193,40 +193,7 @@ onValue(historyRef, (snapshot) => {
 
 });
 
-function tampilkanHistory(data)
-{
-    const tbody = document.getElementById("historyBody");
 
-    tbody.innerHTML = "";
-
-    const labels = [];
-    const suhu1 = [];
-    const suhu2 = [];
-    const suhu3 = [];
-
-    const jumlah = data.jumlahSample;
-
-    for(let i = 1; i <= jumlah; i++)
-    {
-        const sample = data["sample" + i];
-
-        labels.push(sample.waktu);
-
-        suhu1.push(sample.suhu1);
-        suhu2.push(sample.suhu2);
-        suhu3.push(sample.suhu3);
-
-        tbody.innerHTML += `
-        <tr>
-            <td>${sample.waktu}</td>
-            <td>${sample.suhu1.toFixed(2)} °C</td>
-            <td>${sample.suhu2.toFixed(2)} °C</td>
-            <td>${sample.suhu3.toFixed(2)} °C</td>
-        </tr>
-        `;
-    }
-
-    
     // ==========================
     // Atur skala Y otomatis
     // ==========================
@@ -438,7 +405,7 @@ function buatTabJam(semuaJam){
 
         }
 
-        tab.innerHTML = jam.replace(/-/g,":");
+        tab.innerHTML = jam.substring(0,5).replace("-",":");
 
         tab.onclick=()=>{
 
@@ -487,7 +454,7 @@ function buatTabelHari(semuaJam){
                 color:white;
                 font-weight:bold;
                 text-align:left;">
-                Monitoring ${jam.replace(/-/g,":")}
+                Monitoring ${jam.substring(0,5).replace("-",":")}
             </td>
         </tr>
         `;
@@ -520,52 +487,53 @@ function buatTabelHari(semuaJam){
 
 function updateGrafikHari(semuaJam){
 
-    const labels=[];
+    const labels = [];
+    const suhu1 = [];
+    const suhu2 = [];
+    const suhu3 = [];
 
-    const suhu1=[];
-
-    const suhu2=[];
-
-    const suhu3=[];
-
-    const jamList=Object.keys(semuaJam).sort();
+    const jamList = Object.keys(semuaJam).sort();
 
     jamList.forEach(jam=>{
 
-        const data=semuaJam[jam];
+        const data = semuaJam[jam];
+
+        let total1 = 0;
+        let total2 = 0;
+        let total3 = 0;
 
         for(let i=1;i<=data.jumlahSample;i++){
 
-            const sample=data["sample"+i];
-
-            labels.push(sample.waktu);
-
-            suhu1.push(sample.suhu1);
-
-            suhu2.push(sample.suhu2);
-
-            suhu3.push(sample.suhu3);
+            total1 += data["sample"+i].suhu1;
+            total2 += data["sample"+i].suhu2;
+            total3 += data["sample"+i].suhu3;
 
         }
 
+        labels.push(jam.substring(0,5).replace("-",":"));
+
+        suhu1.push(total1/data.jumlahSample);
+        suhu2.push(total2/data.jumlahSample);
+        suhu3.push(total3/data.jumlahSample);
+
     });
 
-    const semuaData=[...suhu1,...suhu2,...suhu3];
+    const semuaData = [...suhu1,...suhu2,...suhu3];
 
-    chart.options.scales.y.min=Math.floor(Math.min(...semuaData)/2)*2;
+    chart.options.scales.y.min =
+        Math.floor(Math.min(...semuaData)/2)*2;
 
-    chart.options.scales.y.max=Math.ceil(Math.max(...semuaData)/2)*2;
+    chart.options.scales.y.max =
+        Math.ceil(Math.max(...semuaData)/2)*2;
 
-    chart.options.scales.y.ticks.stepSize=1;
+    chart.options.scales.y.ticks.stepSize = 1;
 
-    chart.data.labels=labels;
-
-    chart.data.datasets[0].data=suhu1;
-
-    chart.data.datasets[1].data=suhu2;
-
-    chart.data.datasets[2].data=suhu3;
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = suhu1;
+    chart.data.datasets[1].data = suhu2;
+    chart.data.datasets[2].data = suhu3;
 
     chart.update();
 
 }
+   
