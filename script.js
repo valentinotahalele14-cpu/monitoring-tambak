@@ -194,38 +194,6 @@ onValue(historyRef, (snapshot) => {
 });
 
 
-    // ==========================
-    // Atur skala Y otomatis
-    // ==========================
-    
-    const semuaData = [...suhu1, ...suhu2, ...suhu3];
-
-    const minValue = Math.min(...semuaData);
-    const maxValue = Math.max(...semuaData);
-    
-    // Batas bawah dibulatkan ke genap di bawah
-    chart.options.scales.y.min =
-        Math.floor(minValue / 2) * 2;
-    
-    // Batas atas dibulatkan ke genap di atas
-    chart.options.scales.y.max =
-        Math.ceil(maxValue / 2) * 2;
-    
-    // Interval sumbu
-    chart.options.scales.y.ticks.stepSize = 1;
-    
-    // ==========================
-    
-    chart.data.labels = labels;
-    
-    chart.data.datasets[0].data = suhu1;
-    chart.data.datasets[1].data = suhu2;
-    chart.data.datasets[2].data = suhu3;
-    
-    chart.update();
-
-}
-
 function getStatusSuhu(suhu){
 
     if(suhu < 25){
